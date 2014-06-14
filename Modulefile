@@ -1,0 +1,8 @@
+name    'mojolingo/lumenvox'
+version '0.0.1'
+source 'https://github.com/mojolingo/puppet-lumenvox'
+author 'Justin Aiken'
+license 'MIT'
+summary 'Install and manage Lumenvox services'
+description 'Install and manage Lumenvox services'
+project_page 'https://github.com/mojolingo/puppet-lumenvox'

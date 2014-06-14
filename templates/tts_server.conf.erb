@@ -1,0 +1,50 @@
+[GLOBAL]
+#******************************************************************************#
+#* Description: Config file version. Do not modify
+#* Default Value: 10.5.200
+#******************************************************************************#
+VERSION = 10.5.200
+
+#******************************************************************************#
+#* Description: Port number used by the tts server to listen for connecting
+#*    tts clients
+#* Default Value: 7579
+#******************************************************************************#
+PORT_NUM = default
+
+#******************************************************************************#
+#* Description: When set to IGNORE, the tts engine will ignore any <audio> or
+#*    <lexicon> elements that refer to invalid paths and continue to
+#*    synthesize audio.
+#*    When set to FAIL, tts will return an error and no audio will
+#*    be synthesized.
+#* Default Value: IGNORE
+#******************************************************************************#
+INVALID_FILEPATH_BEHAVIOR = default
+
+#******************************************************************************#
+#* Description: Maximum number of concurrent TTS tasks the server can process.
+#*    Additional tasks are queued.
+#* Default Value: 1
+#******************************************************************************#
+NUM_SYNTHESIS_THREADS = <%= @num_synthesis_threads %>
+
+#******************************************************************************#
+#* Description: Controls the verbosity of event logging. This can be used to
+#*    increase or decrease the amount of log events that are generated.
+#*    Note that increasing logging verbosity uses more CPU, and should
+#*    therefore be avoided wherever possible in production systems where
+#*    optimal performance is critical
+#*
+#* Possible Values:
+#*    1 - Minimal logging
+#*        Logs only errors and critical issues.
+#*    2 - Medium logging
+#*        Logs all non-debug information as events occur
+#*    3 - Maximum logging
+#*        Logs all types of events. This will include any and all informational
+#*        and debugging activity
+#*
+#* Default Value: 1
+#******************************************************************************#
+LOGGING_VERBOSITY = default

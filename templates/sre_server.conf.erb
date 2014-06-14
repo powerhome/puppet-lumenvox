@@ -1,0 +1,132 @@
+[GLOBAL]
+#******************************************************************************#
+#* Description: Config file version. Do not modify
+#* Default Value: 10.5.200
+#******************************************************************************#
+VERSION = 10.5.200
+
+[SRE]
+#******************************************************************************#
+#* Description: Port number used by the SRE server to listen for connecting clients
+#* Default Value: 5730
+#******************************************************************************#
+SRE_PORTNUM = default
+
+#******************************************************************************#
+#* Description: Enables writing of cached grammars to disk
+#* Default Value: 1
+#******************************************************************************#
+ENABLE_CACHE = default
+
+#******************************************************************************#
+#* Description: Number of minutes a cached grammar is inactive before it is removed
+#* Default Value: 1440
+#******************************************************************************#
+CACHE_EXPIRATION = default
+
+#******************************************************************************#
+#* Description: Maximum number of grammars loaded into memory before oldest are removed
+#* Default Value: 1000
+#******************************************************************************#
+CACHE_MAX_NUMBER = default
+
+#******************************************************************************#
+#* Description: Maximum bytes of memory used by cached grammars before oldest are removed
+#* Default Value: 268435456
+#******************************************************************************#
+CACHE_MAX_MEMORY = default
+
+#******************************************************************************#
+#* Description: Maximum number of concurrent decode jobs that the SRE server will run.Increasing this number makes it more likely that parallel decode tasks must compete for resources,Decreasing this number makes it more likely that a decode task must wait in a backlog before being processed.
+#* Default Value: 4
+#******************************************************************************#
+NUM_DECODE_THREADS = default
+
+#******************************************************************************#
+#* Description: Determines how available resources are used to track information required for confidence scoring
+#*    0 = No frame tracking (fastest, least memory but worst confidence scoring)
+#*    1 = history_lists (slowest, less memory)
+#*    2 = history blocks, (slightly faster, more memory)
+#* Default Value: 2
+#******************************************************************************#
+FRAME_TRACK_MODE = default
+
+#******************************************************************************#
+#* Description: Memory threshold in MB for critical memory behavior
+#* Default Value: 100
+#******************************************************************************#
+CRITICAL_MEMORY_THRESHOLD = default
+
+#******************************************************************************#
+#* Description: Memory threshold in MB for low memory behavior
+#* Default Value: 250
+#******************************************************************************#
+LOW_MEMORY_THRESHOLD = default
+
+#******************************************************************************#
+#* Description: Memory threshold in MB for limited memory behavior
+#* Default Value: 750
+#******************************************************************************#
+LIMITED_MEMORY_THRESHOLD = default
+
+#******************************************************************************#
+#* Description: Loads up low resolution acoustic models for use by the decode search (fastest)
+#* Default Value: 1
+#******************************************************************************#
+LOAD_LOW_RES_MODEL = default
+
+#******************************************************************************#
+#* Description: Loads up medium resolution acoustic models for use by the decode search
+#* Default Value: 0
+#******************************************************************************#
+LOAD_MED_RES_MODEL = default
+
+#******************************************************************************#
+#* Description: Loads up high resolution acoustic models for use by the decode search (most accurate)
+#* Default Value: 0
+#******************************************************************************#
+LOAD_HIGH_RES_MODEL = default
+
+#******************************************************************************#
+#* Description: The maximum size a subset list can grow during FST determinization before it gives up.
+#*    This value is a safeguard against determinization operations that can recurse infinitely
+#*    or take an unreasonable amount of time and resources to complete.
+#* Default Value: 50000
+#******************************************************************************#
+FST_DETERMINIZE_SUBSET_LIMIT = default
+
+#******************************************************************************#
+#* Description: 1 = SRGS compliance mode: Top-level public rules that are not referenced are activated along with root
+#*    0 = Backwards compatibility mode: Rules that are not referenced are unreachable
+#*
+#* Default Value: 1
+#******************************************************************************#
+PUBLIC_RULE_ACTIVATION_MODE = default
+
+#******************************************************************************#
+#* Description: String value to use if unknown language identifier is specified in a grammar
+#*    Set to "NULL" for VXML-compliant behavior (error on unknown language-id)
+#*
+#* Default Value: AmericanEnglish
+#******************************************************************************#
+UNKNOWN_LANGUAGE_VALUE = default
+
+#******************************************************************************#
+#* Description: Controls the verbosity of event logging. This can be used to
+#*    increase or decrease the amount of log events that are generated.
+#*    Note that increasing logging verbosity uses more CPU, and should
+#*    therefore be avoided wherever possible in production systems where
+#*    optimal performance is critical
+#*
+#* Possible Values:
+#*    1 - Minimal logging
+#*        Logs only errors and critical issues.
+#*    2 - Medium logging
+#*        Logs all non-debug information as events occur
+#*    3 - Maximum logging
+#*        Logs all types of events. This will include any and all informational
+#*        and debugging activity
+#*
+#* Default Value: 1
+#******************************************************************************#
+LOGGING_VERBOSITY = <%= @logging_verbosity %>

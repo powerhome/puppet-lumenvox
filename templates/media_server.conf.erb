@@ -1,0 +1,251 @@
+[GLOBAL]
+#******************************************************************************#
+#* Description: Config file version. Do not modify
+#* Default Value: 10.5.200
+#******************************************************************************#
+VERSION = 10.5.200
+
+#******************************************************************************#
+#* Description: This is the only parameter that you really NEED to set.
+#*    all the others have acceptable defaults. Replace this number
+#*    with your machine's IP address.  Only leave this default loop back
+#*    IP address if you install the MRCP server on the same machine as
+#*    the platform that is hosting your application.
+#* Default Value: 127.0.0.1
+#******************************************************************************#
+mrcp_server_ip = <%= @mrcp_server_ip %>
+
+#******************************************************************************#
+#* Description: this parameter is the lowest numbered port that will be used
+#*    for MRCP. One port will be used per MRCP resource.
+#* Default Value: 30000
+#******************************************************************************#
+mrcp_server_port_base = default
+
+#******************************************************************************#
+#* Description: this parameter is the lowest numbered port that will be used
+#*    for RTP/RTCP. One port will be used per RTP resource
+#* Default Value: 35000
+#******************************************************************************#
+rtp_server_port_base = default
+
+#******************************************************************************#
+#* Description: the maximum number of concurrent resources.
+#*    practically speaking, this number can not be greater than the
+#*    number of port licenses you have for your SRE. There can be this
+#*    number of RTP ports AND also this number of MRCP ports,
+#*    providing that licensing requirements are met.
+#* Default Value: 200
+#******************************************************************************#
+mrcp_server_resmax = default
+
+#******************************************************************************#
+#* Description: this parameter sets the port on which the server will listen
+#*    for incoming monitoring client connections.
+#* Default Value: 29900
+#******************************************************************************#
+monitoring_port = default
+
+#******************************************************************************#
+#* Description: this parameter sets the port on which the server will listen
+#*    for incoming LVManager messages.
+#* Default Value: 7590
+#******************************************************************************#
+messaging_port = default
+
+#******************************************************************************#
+#* Description: if you are running the MrcpServer and SRE on different machines,
+#*    set this value to the IP address of the machine that is running
+#*    the SRE.
+#* Default Value: 127.0.0.1
+#******************************************************************************#
+sre_ip = <%= @sre_ip %>
+
+#******************************************************************************#
+#* Description: enable_sre_logging = 0, 1, 2 or 3  (default = 0)
+#*    enable or disable logging of response files in the Lang\Responses
+#*    Directory of of the Speech Recognition Engine.
+#*
+#* Possible Values:
+#*    0 - SAVE_SOUND_FILES_NONE
+#*        Deactivates saving of .callsre files.
+#*    1 - SAVE_SOUND_FILES_BASIC
+#*        Saves basic information in .callsre files. This includes the audio
+#*        from when BARGE_IN occurred up to the END_OF_SPEECH.
+#*    2 - SAVE_SOUND_FILES_ADVANCED
+#*        In addition to the information stored with the SAVE_SOUND_FILES_BASIC
+#*        setting, when speech is streamed in to the Voice Activity Detection
+#*        module, all of the collected data prior to a StreamCancel command is
+#*        saved. This is usually when a NO_INPUT or TIMEOUT event occurs. This
+#*        option collects data only when there is something to debug, which
+#*        offers a balance between disk usage and retaining important
+#*        information for debugging and is particularly useful when diagnosing
+#*        NO-INPUT problems.
+#*    3 - SAVE_SOUND_FILES_ALL
+#*        Used to collect all streamed data in all cases. This option collects
+#*        all streamed data, whether there was a NO_INPUT or TIMEOUT event or
+#*        not, including untrimmed audio from 'good' decodes.  This option can
+#*        be useful in diagnosing barge-in problems as well as other potential
+#*        issues.
+#* Default Value: 0
+#******************************************************************************#
+enable_sre_logging = <%= @enable_sre_logging %>
+
+#******************************************************************************#
+#* Description: Updates statistics file when enabled. Default = 1 (true)
+#* Possible Values:
+#*    0 - Do not save any application statistic information
+#*    1 - Save application statistic information
+#*
+#* Default Value: 1
+#******************************************************************************#
+enable_app_stat_logging = default
+
+#******************************************************************************#
+#* Description: Sets the number of sockets that are allowed to backlog on the listen
+#*    function. Reduce this number if your OS cannot handle the default
+#*    value. A higher number here allows better call surge performance.
+#* Default Value: 150
+#******************************************************************************#
+listening_socket_size = default
+
+#******************************************************************************#
+#* Description: port_allocation_mode = 0 (default)
+#*    Sets the mode used for MRCP/RTP port allocation.
+#*    0 - ROUND-ROBIN approach, which may be optimal in large configurations
+#*    1 - FIRST-AVAILABLE port uses lowest port number available.
+#* Default Value: 0
+#******************************************************************************#
+port_allocation_mode = default
+
+#******************************************************************************#
+#* Description: number of threads dedicated to handling RTSP call creation
+#* Default Value: 10
+#******************************************************************************#
+num_spawning_threads = default
+
+#******************************************************************************#
+#* Description: number of threads performing call cleanup
+#* Default Value: 10
+#******************************************************************************#
+num_graveyard_threads = default
+
+#******************************************************************************#
+#* Description: number of MRCP processing threads
+#* Default Value: 24
+#******************************************************************************#
+num_mrcp_event_threads = default
+
+#******************************************************************************#
+#* Description: number of threads handling RTP traffic
+#* Default Value: 12
+#******************************************************************************#
+num_rtp_event_threads = default
+
+#******************************************************************************#
+#* Description: this parameter sets the port on which the server will listen
+#*    for incoming SIP messages. 0 = Disabled.
+#* Default Value: 5060
+#******************************************************************************#
+sip_port = <%= @sip_port %>
+
+#******************************************************************************#
+#* Description: this parameter sets the port on which the server will listen
+#*    for incoming RTSP messages. 0 = Disabled.
+#* Default Value: 554
+#******************************************************************************#
+rtsp_port = default
+
+[VendorSpecific]
+#******************************************************************************#
+#* Description: Amount of audio before voice activity has been detected that is
+#*    sent to the speech recognition engine for decoding. Increasing this value
+#*    may help if call logs show clipping at the beginning of decoded audio.
+#* Default Value: 480
+#******************************************************************************#
+wind_back_time = default
+
+#******************************************************************************#
+#* Description: Amount of non-speech audio (in milliseconds) streamed prior to the
+#*    barge-in event that is required to trigger a barge-in timeout event and
+#*    cancel the stream.
+#* Default Value: 15000
+#******************************************************************************#
+barge_in_timeout = default
+
+#******************************************************************************#
+#* Description: Amount of speech audio (in milliseconds) streamed after the barge-in
+#*    event that is required to trigger an end-of-speech event, stop the
+#*    stream and perform a recognition.
+#* Default Value: 20000
+#******************************************************************************#
+end_of_speech_timeout = default
+
+#******************************************************************************#
+#* Description: Sets the amount of silence/noise/non speech data in milliseconds
+#*    that can be guaranteed before the user starts speaking. This time is used
+#*    in initializing some parameters. The longer this value the better the
+#*    estimate. It is recommended to be 1 sec if that amount of data can be
+#*    guaranteed to be non speech in the particular application
+#* Default Value: 100
+#******************************************************************************#
+vad_stream_init_delay = default
+
+#******************************************************************************#
+#* Description: Specifies how sure the VAD needs to be that the frame of data is
+#*    speech before bargein. The higher the value, the more sure we need to be
+#*    that the frame is speech before bargein. Valid range 0 - 100
+#* Default Value: 50
+#******************************************************************************#
+vad_bargein_threshold = default
+
+#******************************************************************************#
+#* Description: Enables compatibility encoding of results. Contact LumenVox for
+#*    details.
+#* Default Value: 0
+#******************************************************************************#
+compatibility_mode = default
+
+[MRCP]
+#******************************************************************************#
+#* Description: Overrides the default behavior of the Save-Waveform header
+#* Default Value: false
+#******************************************************************************#
+save_waveform = default
+
+#******************************************************************************#
+#* Description: Specifies location of saved wavefiles in local filesystem.
+#*    Disabled if not set
+#* Default Value:
+#******************************************************************************#
+waveform_url_location = default
+
+#******************************************************************************#
+#* Description: Specifies prefix of returned wavefile URLs. This prefix will be
+#*    returned with the filename appended. The default waveform_url_location
+#*    will be used if this value is not set. Using this option may be useful
+#*    when exposing these files via some http/https server, allowing you to
+#*    specify a different returned URL in place of the actual location of the
+#*    audio file(s) on the file system.
+#* Default Value:
+#******************************************************************************#
+waveform_url_prefix = default
+
+#******************************************************************************#
+#* Description: If enabled (1), wavefiles will be erased at session end.
+#* Default Value: 1
+#******************************************************************************#
+remove_waveform_files = default
+
+[MRCPv1]
+#******************************************************************************#
+#* Description: default URL path specified for recognizer resources
+#* Default Value: /media/speechrecognizer
+#******************************************************************************#
+recognizer_resource_url = default
+
+#******************************************************************************#
+#* Description: default URL path specified for synthesizer resources
+#* Default Value: /media/synthesizer
+#******************************************************************************#
+synthesizer_resource_url = default

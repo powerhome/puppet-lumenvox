@@ -1,0 +1,588 @@
+[GLOBAL]
+#******************************************************************************#
+#* Description: Config file version. Do not modify
+#* Default Value: 10.5.200
+#******************************************************************************#
+VERSION = 10.5.200
+
+#******************************************************************************#
+#* Description: This property sets which License Servers are used for
+#*    obtaining licenses for Speech Recognition or TTS operations.
+#* Possible Values: A list of IP addresses and optional ports separated by
+#*    semicolons. For instance, 127.0.0.1;10.0.0.1:5721 specifies
+#*    a server at 127.0.0.1 using the default port of 7569, and a
+#*    server at 10.0.0.1 using the port 5721.
+#*
+#* Default Value: 127.0.0.1
+#******************************************************************************#
+LICENSE_SERVERS = <%= @license_servers.join(';') %>
+
+#******************************************************************************#
+#* Description: Specifies the amount of time (in seconds) a released license
+#*    is to be cached for use by future license requests.
+#* Possible Values: A positive integer (max 3600); 0 disables caching
+#*
+#* Default Value: 30
+#******************************************************************************#
+LICENSE_CACHE_PERIOD = default
+
+#******************************************************************************#
+#* Description: Controls the verbosity of event logging. This can be used to
+#*    increase or decrease the amount of log events that are generated.
+#*    Note that increasing logging verbosity uses more CPU, and should
+#*    therefore be avoided wherever possible in production systems where
+#*    optimal performance is critical
+#*
+#* Possible Values:
+#*    1 - Minimal logging
+#*        Logs only errors and critical issues.
+#*    2 - Medium logging
+#*        Logs all non-debug information as events occur
+#*    3 - Maximum logging
+#*        Logs all types of events. This will include any and all informational
+#*        and debugging activity
+#*
+#* Default Value: 1
+#******************************************************************************#
+LOGGING_VERBOSITY = default
+
+[SRE]
+#******************************************************************************#
+#* Description: This property sets which Speech Engine servers are used for
+#*    processing decodes.
+#*
+#* Possible Values: A list of IP addresses and optional ports separated by
+#*    semicolons. For instance, 127.0.0.1;10.0.0.1:5721 specifies
+#*    a server at 127.0.0.1 using the default port of 5730 and a
+#*    server at 10.0.0.1 using the port 5721.
+#*
+#* Default Value: 127.0.0.1:5730
+#******************************************************************************#
+SRE_SERVERS = <%= @sre_servers.join(';') %>
+
+#******************************************************************************#
+#* Description: The license type to use when opening a port.
+#* Possible Values: VoxLite, SpeechPort, or Auto. If the value is set
+#*    to VoxLite, the client will get the license from the Lite
+#*    license pool (these licenses only allow up to 500 vocabulary
+#*    items per recognition). If the value is set to SpeechPort,
+#*    the client will get the license from the Full license pool.
+#*    By default, the client will auto-pick the license; it will
+#*    use up Full licenses before using Lite licenses.
+#*
+#* Default Value: Auto
+#******************************************************************************#
+LICENSE_TYPE = <%= @license_type %>
+
+#******************************************************************************#
+#* Description: When set to 1, acquisition of licenses is delayed until the call
+#*    to LoadGrammar. Enabling this mode is not recommended unless using
+#*    call progress analysis.
+#* Possible Values: 1 (enabled) or 0 (disabled)
+#*
+#* Default Value: 0
+#******************************************************************************#
+DELAYED_LICENSE_ACQUISITION = <%= @delayed_license_acquisition %>
+
+#******************************************************************************#
+#* Description: Specifies the maximum number of n-best results to be returned
+#*    by the Engine.
+#*
+#* Possible Values: Integer from 0 - 10000
+#*
+#* Default Value: 1
+#******************************************************************************#
+MAX_NBEST_RETURNED = default
+
+#******************************************************************************#
+#* Description: In a non-blocking decode, this is the timeout value, in
+#*    milliseconds, used by LV_SRE_WaitForDecode and
+#*    LVSpeechPort::WaitForDecode functions. In blocking decode,
+#*    this is the time to wait until the decode times out and
+#*    returns an error from LV_SRE_Decode and LVSpeechPort::Decode.
+#* Possible Values: Integer time in milliseconds from 0 - 10000000
+#*
+#* Default Value: 20000
+#******************************************************************************#
+DECODE_TIMEOUT = default
+
+#******************************************************************************#
+#* Description: Specifies how long, in milliseconds, the client should wait
+#*    for a grammar to load. If the timeout is reached before
+#*    the grammar is loaded, the LoadGrammar function returns
+#*    error code -37, LV_LOAD_GRAMMAR_TIMEOUT.
+#* Possible Values: Integer time in milliseconds from 0 - 10000000
+#*
+#* Default Value: 200000
+#******************************************************************************#
+LOAD_GRAMMAR_TIMEOUT = default
+
+#******************************************************************************#
+#* Description: Specifies how long, in milliseconds, the client should wait
+#*    for a grammar to parse. If the timeout is reached before
+#*    the grammar is loaded, the LoadGrammar function returns
+#*    error code -6, LV_TIME_OUT.
+#* Possible Values: Integer time in milliseconds from 0 - 10000000
+#*
+#* Default Value: 10000
+#******************************************************************************#
+PARSE_GRAMMAR_TIMEOUT = default
+
+#******************************************************************************#
+#* Description: Controls whether LumenVox will strictly implement the final
+#*    SISR 1.0 standard for adding tags to grammars. This value
+#*    must be changed to 0 in order to run in a backward-
+#*    compatibile mode able to read the older tag format
+#*
+#* Possible Values: 0 (disabled) or 1 (enabled)
+#*
+#* Default Value: 1
+#******************************************************************************#
+STRICT_SISR_COMPLIANCE = default
+
+#******************************************************************************#
+#* Description: Controls how aggressively the Engine removes silence from
+#*    input audio.
+#* Possible Values: Integer ranging from 0 (very aggressive) to 1000
+#*    (no silence trimmed).
+#*
+#* Default Value: 970
+#******************************************************************************#
+TRIM_SILENCE_VALUE = default
+
+#******************************************************************************#
+#* Description: Controls whether the application will save off .callsre files
+#*    used with the LumenVox Speech Tuner. Turn this on to
+#*    capture audio and more information related to each decode.
+#*    These files will be saved by default to
+#*    /var/lumenvox/responses/ on Linux and
+#*    C:\Program Files\LumenVox\Engine\Lang\Responses\ on Windows.
+#* Possible Values:
+#*    0 - SAVE_SOUND_FILES_NONE
+#*        Deactivates saving of .callsre files.
+#*    1 - SAVE_SOUND_FILES_BASIC
+#*        Saves basic information in .callsre files. This includes the audio
+#*        from when BARGE_IN occurred up to the END_OF_SPEECH.
+#*    2 - SAVE_SOUND_FILES_ADVANCED
+#*        In addition to the information stored with the SAVE_SOUND_FILES_BASIC
+#*        setting, when speech is streamed in to the Voice Activity Detection
+#*        module, all of the collected data prior to a StreamCancel command is
+#*        saved. This is usually when a NO_INPUT or TIMEOUT event occurs. This
+#*        option collects data only when there is something to debug, which
+#*        offers a balance between disk usage and retaining important
+#*        information for debugging and is particularly useful when diagnosing
+#*        NO-INPUT problems.
+#*    3 - SAVE_SOUND_FILES_ALL
+#*        Used to collect all streamed data in all cases. This option collects
+#*        all streamed data, whether there was a NO_INPUT or TIMEOUT event or
+#*        not, including untrimmed audio from 'good' decodes.  This option can
+#*        be useful in diagnosing barge-in problems as well as other potential
+#*        issues
+#*
+#* Default Value: 0
+#******************************************************************************#
+SAVE_SOUND_FILES = default
+
+#******************************************************************************#
+#* Description: Specifies the noise reduction algorithm used. For most users
+#*    the default noise reduction algorithm should work best. For
+#*    certain noise conditions the Alternate noise reduction
+#*    algorithm has shown better results. Hence, advanced users
+#*    can try switching the algorithm to see if it improves their
+#*    performance in noisy conditions. The Adaptive noise reduction
+#*    algorithm works best only when the noise is constantly changing
+#*    such as car or highway noise. For more stationary noises like
+#*    fan noise, the default algorithm will show the best performance
+#*
+#* Possible Values:
+#*    0 - NOISE_REDUCTION_NONE
+#*        Deactivates noise reduction. This setting is not recommended unless
+#*        you actually find a problem with noise reduction since disabling this
+#*        will increase decode times during the presence of noise.
+#*    1 - NOISE_REDUCTION_DEFAULT
+#*        This is the recommended Advanced Noise Reduction algorithm for most
+#*        cases, which is automatically activated when noise levels are high
+#*        enough to require noise reduction.
+#*    2 - NOISE_REDUCTION_ALTERNATE
+#*        This is the alternate Noise Reduction algorithm that can be tested if
+#*        the performance with the default setting is not satisfactory. This is
+#*        similar to the default setting, but we have seen varied results based
+#*        on differing noise types and levels. For most noise types, the default
+#*        algorithm should work better, however certain noise types and/or
+#*        applications may benefit from this setting.
+#*    3 - NOISE_REDUCTION_ADAPTIVE
+#*        The Advanced Adaptive Noise Reduction algorithm continually estimates
+#*        the noise to be effective in continuously changing noisy environments.
+#*        This works better than the default setting when there is car noise and
+#*        other continuously changing noises. For stationary/constant noises
+#*        like line noise, the performance is slightly lower than the Default
+#*        Advanced Noise Reduction.
+#* Default Value: 1
+#******************************************************************************#
+NOISE_REDUCTION_ENABLE = default
+
+#******************************************************************************#
+#* Description: Enables or Disables client side (Speech Port) grammar caching.
+#*    This can have a significant impact on grammar load times, since
+#*    processing of grammars is cached in memory and disk, improving
+#*    throughput.
+#*
+#* Possible Values: 0 - Caching Disabled, 1 - Caching Enabled
+#*
+#* Default Value: 1
+#******************************************************************************#
+CLIENT_CACHE_ENABLE = default
+
+#******************************************************************************#
+#* Description: The amount of time, in minutes, to allow an unused grammar to
+#*    remain in memory. After a grammar has remained unused for this
+#*    period of time, it will be unloaded from memory, but will remain
+#*    in the disk cache, allowing fast reactivation and reloading if
+#*    needed.
+#*
+#* Possible Values: A number between 2 (minimum) and 1000000 (maximum)
+#*
+#* Default Value: 1440
+#******************************************************************************#
+CLIENT_CACHE_EXPIRATION = default
+
+#******************************************************************************#
+#* Description: The maximum number of cached grammar entries to hold in memory
+#*    at any time.
+#*
+#* Possible Values: A number between 2 (minimum) and 100000 (maximum)
+#*
+#* Default Value: 100
+#******************************************************************************#
+CLIENT_CACHE_MAX_NUMBER = default
+
+#******************************************************************************#
+#* Description: The maximum size of memory to utilize for caching grammars.
+#* Possible Values: A number between 2 (minimum) and 536870912 (maximum)
+#*
+#* Default Value: 268435456
+#******************************************************************************#
+CLIENT_CACHE_MAX_MEMORY = default
+
+[TTS]
+#******************************************************************************#
+#* Description: This property sets which TTS Engine servers are used for
+#*    a TTS Server. Specified in milliseconds.
+#* Possible Values: A list of IP addresses and optional ports separated by
+#*    semicolons. For instance, 127.0.0.1;10.0.0.1:5721 specifies
+#*    a server at 127.0.0.1 using the default port of 7579, and a
+#*    server at 10.0.0.1 using the port 5721.
+#*
+#* Default Value: 127.0.0.1
+#******************************************************************************#
+TTS_SERVERS = <%= @tts_servers.join(';') %>
+
+#******************************************************************************#
+#* Description: Default language for synthesis
+#* Default Value: en-US
+#******************************************************************************#
+SYNTHESIS_LANGUAGE = <%= @default_tts_language %>
+
+#******************************************************************************#
+#* Description: The gender of the voice timbre of the audio produced
+#* Default Value: neutral
+#******************************************************************************#
+SYNTH_VOICE_GENDER = <%= @default_tts_gender %>
+
+#******************************************************************************#
+#* Description: The processor-specific voice name of the audio produced
+#* Default Value:
+#******************************************************************************#
+SYNTH_VOICE_NAME = <%= @default_tts_voice %>
+
+#******************************************************************************#
+#* Description: Format in which the synthesized audio is expected.
+#*
+#* Possible Values:
+#*        1 - ULAW
+#*        2 - PCM
+#*        3 - ALAW
+#*
+#* Default Value: 1
+#******************************************************************************#
+SYNTHESIS_SOUND_FORMAT = default
+
+#******************************************************************************#
+#* Description: Duration to wait for a response after sending a message to
+#*    processing synthesis.
+#* Default Value: 10000
+#******************************************************************************#
+TTS_REQUEST_TIMEOUT = default
+
+#******************************************************************************#
+#* Description: Default sampling rate of the synthesized audio
+#* Default Value: 8000
+#******************************************************************************#
+SYNTHESIS_SAMPLING_RATE = default
+
+#******************************************************************************#
+#* Description: Controls whether the application will log TTS events to be saved
+#*    to .callsre files used by LumenVox Speech Tuner.
+#* Possible Values:
+#*        0 - Disable
+#*        1 - Enable
+#*
+#* Default Value: 0
+#******************************************************************************#
+LOG_TTS_EVENTS = <%= @log_tts_events %>
+
+#******************************************************************************#
+#* Description: The pitch of the audio produced
+#* Default Value: default
+#******************************************************************************#
+SYNTH_PROSODY_PITCH = default
+
+#******************************************************************************#
+#* Description: The contour of the sound pitch produced
+#* Default Value:
+#******************************************************************************#
+SYNTH_PROSODY_CONTOUR = default
+
+#******************************************************************************#
+#* Description: The range of the sound produced
+#* Default Value: default
+#******************************************************************************#
+SYNTH_PROSODY_RANGE = default
+
+#******************************************************************************#
+#* Description: The speaking rate of the audio produced
+#* Default Value: default
+#******************************************************************************#
+SYNTH_PROSODY_RATE = default
+
+#******************************************************************************#
+#* Description: The duration of the time it takes for the texts to play
+#* Default Value:
+#******************************************************************************#
+SYNTH_PROSODY_DURATION = default
+
+#******************************************************************************#
+#* Description: The volume of the audio produced
+#* Default Value: default
+#******************************************************************************#
+SYNTH_PROSODY_VOLUME = default
+
+#******************************************************************************#
+#* Description: The age of the voice timbre of the audio produced
+#* Default Value:
+#******************************************************************************#
+SYNTH_VOICE_AGE = default
+
+#******************************************************************************#
+#* Description: The preferred voice variant of the audio produced
+#* Default Value:
+#******************************************************************************#
+SYNTH_VOICE_VARIANT = default
+
+#******************************************************************************#
+#* Description: The strength of emphasis of the audio produced
+#* Default Value: moderate
+#******************************************************************************#
+SYNTH_EMPHASIS_LEVEL = default
+
+[STREAM]
+#******************************************************************************#
+#* Description: The streaming interface will flag STREAM_STATUS_BARGE_IN_TIMEOUT, if no speech was detected
+#*    in the number of milliseconds specified by this property.
+#* Possible Values: -1 (infinite) or a positive integer number of milliseconds
+#*
+#* Default Value: -1
+#******************************************************************************#
+BARGE_IN_TIMEOUT = default
+
+#******************************************************************************#
+#* Description: After barge-in, the streaming interface will flag STREAM_STATUS_END_SPEECH_TIMEOUT, if it did
+#*    detect end-of-speech in the time specified by this property. This is different from the end of
+#*    speech delay; STREAM_PARM_END_OF_SPEECH_TIMEOUT represents the total amount of time a caller has
+#*    to speak after barge-in is detected.
+#*
+#* Default Value: -1
+#******************************************************************************#
+END_OF_SPEECH_TIMEOUT = default
+
+#******************************************************************************#
+#* Description: Changes voice activity detection delay for end of speech detection based to one of four modes.
+#* Possible Values:
+#*    0 - STREAM_END_OF_SPEECH_DETECTION_NORMAL (800ms).
+#*    1 - STREAM_END_OF_SPEECH_DETECTION_SINGLE_WORDS (500ms)
+#*    2 - STREAM_END_OF_SPEECH_DETECTION_PHRASES_WITH_PAUSES (1200ms)
+#*    3 - STREAM_END_OF_SPEECH_DETECTION_PHRASES_NO_PAUSES (800ms)
+#*
+#* Default Value: 0
+#******************************************************************************#
+END_OF_SPEECH_DETECTION = default
+
+#******************************************************************************#
+#* Description: A higher value makes the VAD more sensitive to speech which means that the VAD is very sure the
+#*    data is speech before barge in. Raising the value will reject more false positives/noises.
+#*    However, it may mean that some speech that is on the borderline may be rejected. This value
+#*    should not be changed from the default without significant tuning and verification
+#* Possible Values: Integer range from 0 to 100
+#*
+#* Default Value: 50
+#******************************************************************************#
+VAD_BARGEIN_THRESHOLD = default
+
+#******************************************************************************#
+#* Description: Accurate VAD depends on a good estimation of the acoustic environment. The VAD module uses the
+#*    first couple frames of audio to estimate the acoustic environment, such as noise level.
+#*    The length of this period is defined by this parameter.
+#* Possible Values: a positive integer number of milliseconds
+#*
+#* Default Value: 100
+#******************************************************************************#
+VAD_STREAM_INIT_DELAY = default
+
+#******************************************************************************#
+#* Description: This is the amount of time, specified in milliseconds, that the Engine must detect silence after
+#*    speech before it begins processing the utterance.
+#* Possible Values: a positive integer number of milliseconds
+#*
+#* Default Value: 800
+#******************************************************************************#
+VAD_EOS_DELAY = default
+
+#******************************************************************************#
+#* Description: The length of audio to be wound back at the beginning of voice activity. This is used primarily
+#*    to counter instances where barge-in does not accurately capture the very start of speech. The
+#*    resolution of this parameter is 1/8 of a second.
+#* Possible Values: a positive integer number of milliseconds
+#*
+#* Default Value: 480
+#******************************************************************************#
+VAD_WIND_BACK = default
+
+#******************************************************************************#
+#* Description: Determines how much louder the speaker must be than the background noise in order to trigger barge-in.
+#*    The smaller this value, the easier it will be to trigger barge-in.
+#* Possible Values: Integer range from 0 to 100
+#*
+#* Default Value: 50
+#******************************************************************************#
+VAD_SNR_SENSITIVITY = default
+
+#******************************************************************************#
+#* Description: The volume required to trigger barge-in. The smaller the value, the more sensitive barge-in will be.
+#*    This is primarily used to deal with poor echo cancellation. By setting this value higher (less
+#*    sensitive) prompts that are not properly canceled will be less likely to falsely cancel barge-in.
+#* Possible Values: Integer range from 0 to 100
+#*
+#* Default Value: 50
+#******************************************************************************#
+VAD_VOLUME_SENSITIVITY = default
+
+#******************************************************************************#
+#* Description: If active, the decode will start immediately on end-of-speech detection or a call to StopStream.
+#*    Otherwise, the application needs to call LV_SRE_Decode to begin a decode.
+#* Possible Values: 0 (off) or 1 (on)
+#*
+#* Default Value: 0
+#******************************************************************************#
+AUTO_DECODE = default
+
+#******************************************************************************#
+#* Description: The sound format handled by the stream.
+#* Possible Values:
+#*    1 - ULAW_8KHZ
+#*    2 - PCM_8KHZ
+#*    3 - PCM_16KHZ
+#*    4 - ALAW_8KHZ
+#*
+#* Default Value: 1
+#******************************************************************************#
+SOUND_FORMAT = default
+
+#******************************************************************************#
+#* Description: The voice channel for decode to load the sound data to once end
+#*    pointing is done.
+#* Possible Values: Integer range from 0 to 63
+#*
+#* Default Value: 0
+#******************************************************************************#
+VOICE_CHANNEL = default
+
+#******************************************************************************#
+#* Description: Used in Call Progress Analysis (CPA) Mode.
+#*    If we cannot verify the CPA mode through ASR but the length of speech
+#*    detected is below this length, we consider it to be a human residence
+#* Possible Values: a positive integer number of milliseconds
+#*
+#* Default Value: 1800
+#******************************************************************************#
+CPA_HUMAN_RESIDENCE_TIME = default
+
+#******************************************************************************#
+#* Description: Used in Call Progress Analysis (CPA) Mode.
+#*    If we cannot verify the CPA mode through ASR but the length of speech
+#*    detected is below this length, but above the length of human residence
+#*    we consider it to be a human business
+#* Possible Values: a positive integer number of milliseconds
+#*
+#* Default Value: 3000
+#******************************************************************************#
+CPA_HUMAN_BUSINESS_TIME = default
+
+#******************************************************************************#
+#* Description: Used in Call Progress Analysis (CPA) Mode.
+#*    If we do not barge-in by this time we return with an Unknown Speech in
+#*    the answer. This is very similar to a Barge-in-timeout, however, a
+#*    barge-in-timeout leads to the Barge-in-timeout callback being called.
+#*    The CPA_UNKNOWN_SILENCE_TIMEOUT leads to the Unknown Silence answer
+#*    being returned by a decode request in CPA mode.
+#* Possible Values: a positive integer number of milliseconds
+#*
+#* Default Value: 5000
+#******************************************************************************#
+CPA_UNKNOWN_SILENCE_TIMEOUT = default
+
+[GRAMMAR]
+#******************************************************************************#
+#* Description: The default language set for loaded grammars if not otherwise specified.
+#* Possible Values: language specifier string as found in an SRGS grammar
+#*
+#* Default Value: en-US
+#******************************************************************************#
+LANGUAGE = default
+
+#******************************************************************************#
+#* Description: The default grammar mode for loaded grammars if not otherwise specified.
+#* Possible Values: language specifier string as found in an SRGS grammar
+#*
+#* Default Value: voice
+#******************************************************************************#
+MODE = default
+
+#******************************************************************************#
+#* Description: The default tag-format for loaded grammars if not otherwise specified.
+#* Possible Values: language specifier string as found in an SRGS grammar
+#*
+#* Default Value: lumenvox/1.0
+#******************************************************************************#
+TAG-FORMAT = default
+
+#******************************************************************************#
+#* Description: The default base path for loaded grammars if not otherwise specified.
+#*    An empty string specifies the current working directory to be used.
+#* Possible Values: any valid URL
+#*
+#* Default Value:
+#******************************************************************************#
+BASE_URI = default
+
+#******************************************************************************#
+#* Description: The default cache control setting for loaded grammars if not otherwise specified.
+#*    An empty string specifies no timeout.
+#* Possible Values: Integer time in milliseconds from 0 - 10000000
+#*
+#* Default Value:
+#******************************************************************************#
+FETCH-TIMEOUT = default
+
+[AUTHENTICATION]
+AUTHENTICATION_USERNAME = <%= @username %>
+AUTHENTICATION_PASSWORD = <%= @password %>
