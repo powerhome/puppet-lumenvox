@@ -1,0 +1,40 @@
+{
+  "name": "mojolingo/lumenvox",
+  "version": "0.0.1",
+  "author": "Justin Aiken",
+  "summary": "Install and manage Lumenvox services",
+  "license": "MIT",
+  "source": "https://github.com/mojolingo/puppet-lumenvox",
+  "project_page": "https://github.com/mojolingo/puppet-lumenvox",
+  "issues_url": "https://github.com/mojolingo/puppet-lumenvox/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": ">= 3.7.0 < 2015.4.0"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.6.0 < 5.0.0"
+    }
+  ]
+}

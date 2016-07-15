@@ -15,14 +15,15 @@ class lumenvox (
 ) inherits lumenvox::params
 {
 
+  $default_options = $lumenvox::params::default_options
   $options = lumenvox_deepmerge($default_options, $override_options)
 
-  include lumenvox::core
-  include lumenvox::client
-  include lumenvox::sre
-  include lumenvox::media_server
-  include lumenvox::tts
-  include lumenvox::manager
+  include ::lumenvox::core
+  include ::lumenvox::client
+  include ::lumenvox::sre
+  include ::lumenvox::media_server
+  include ::lumenvox::tts
+  include ::lumenvox::manager
 
   Class['lumenvox::core'] -> Class['lumenvox::client'] ->
   Class['lumenvox::sre']  -> Class['lumenvox::media_server'] ->
