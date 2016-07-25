@@ -1,7 +1,7 @@
 # Private class: See README.md.
 class lumenvox::params {
-  $username = undefined
-  $password = undefined
+  $username = undef
+  $password = undef
 
   $default_options = {
     'core' => {

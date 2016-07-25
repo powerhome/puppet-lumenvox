@@ -1,38 +1,28 @@
-require 'rake'
-require 'rspec/core/rake_task'
+require 'puppetlabs_spec_helper/rake_tasks'
+require 'puppet-lint/tasks/puppet-lint'
+require 'puppet-syntax/tasks/puppet-syntax'
 
-desc "Run all RSpec code examples"
-RSpec::Core::RakeTask.new(:rspec) do |t|
-  if File.exist?('spec/spec.opts')
-    t.rspec_opts = File.read("spec/spec.opts").chomp || ''
-  else
-    t.rspec_opts = ''
-  end
-end
+PuppetLint.configuration.fail_on_warnings = true
+PuppetLint.configuration.relative = true
+PuppetLint.configuration.send('disable_80chars')
+PuppetLint.configuration.send('disable_class_inherits_from_params_class')
+PuppetLint.configuration.send('disable_documentation')
+PuppetLint.configuration.log_format = "%{path}:%{linenumber}:%{check}:%{KIND}:%{message}"
 
-SPEC_SUITES = (Dir.entries('spec') - ['.', '..','fixtures']).select {|e| File.directory? "spec/#{e}" }
-namespace :rspec do
-  SPEC_SUITES.each do |suite|
-    desc "Run #{suite} RSpec code examples"
-    RSpec::Core::RakeTask.new(suite) do |t|
-      t.pattern = "spec/#{suite}/**/*_spec.rb"
-      if File.exist?('spec/spec.opts')
-        t.rspec_opts = File.read("spec/spec.opts").chomp || ''
-      else
-        t.rspec_opts = ''
-      end
-    end
-  end
-end
-task :default => :rspec
+exclude_paths = [
+  "pkg/**/*",
+  "vendor/**/*",
+  "spec/**/*",
+]
 
-begin
-  if Gem::Specification::find_by_name('puppet-lint')
-    require 'puppet-lint/tasks/puppet-lint'
-    PuppetLint.configuration.ignore_paths = ["spec/**/*.pp", "vendor/**/*.pp"]
-    PuppetLint.configuration.send("disable_80chars")
+PuppetLint.configuration.ignore_paths = exclude_paths
+PuppetSyntax.exclude_paths = exclude_paths
 
-    task :default => [:rspec, :lint]
-  end
-rescue Gem::LoadError
-end
+desc "Run syntax, lint, and spec tests."
+task :test => [
+  :syntax,
+  :validate,
+  :lint,
+  :spec,
+  :metadata_lint,
+]
