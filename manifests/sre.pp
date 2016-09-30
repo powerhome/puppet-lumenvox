@@ -12,6 +12,8 @@ class lumenvox::sre
 {
 
   $version           = $lumenvox::options['sre']['version']
+  $ver_match         = $version.match(/^[0-9]+.[0-9]+.[0-9]+/)
+  $sem_ver           = $vermatch[0]
   $language_packs    = $lumenvox::options['sre']['language_packs']
   $logging_verbosity = $lumenvox::options['sre']['logging_verbosity']
 
