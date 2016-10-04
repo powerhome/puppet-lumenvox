@@ -1,4 +1,4 @@
-# = Class: lumenvox::tts
+s# = Class: lumenvox::tts
 #
 # This is the lumenvox tts class
 #
@@ -14,7 +14,7 @@ class lumenvox::tts
   $num_synthesis_threads = $::lumenvox::options['tts']['num_synthesis_threads']
   $version               = $::lumenvox::options['tts']['version']
   $ver_match             = $version.match(/^[0-9]+.[0-9]+.[0-9]+/)
-  $sem_ver               = $vermatch[0]
+  $sem_ver               = $ver_match[0]
   $voices                = $::lumenvox::options['tts']['voices']
 
   package { 'LumenVoxTTS':
