@@ -12,7 +12,7 @@ class lumenvox::client inherits lumenvox
 {
 
   $version                 = $lumenvox::options['client']['version']
-  $sem_ver                 = regsubst($version, '^(\d+\.\d+\.\d+)(.*)$','\1')
+  $lumenvox_version        = regsubst($version, '^(\d+\.\d+\.\d+)(.*)$','\1')
   $license_servers         = $lumenvox::options['client']['license_servers']
   $sre_servers             = $lumenvox::options['client']['sre_servers']
   $tts_servers             = $lumenvox::options['client']['tts_servers']
