@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/powerhome/puppet-lumenvox.svg?style=plastic)](https://travis-ci.org/powerhome/puppet-lumenvox)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/powerhome/lumenvox.svg?style=plastic)](https://forge.puppetlabs.com/powerhome/lumenvox)
+[![Puppet Forge Downloads](https://img.shields.io/puppetforge/dt/powerhome/lumenvox.svg?style=plastic)](https://forge.puppetlabs.com/powerhome/lumenvox)
+
 # Description
 
 Puppet module for for Lumenvox media engine.  Heavily based on Mojo Lingo's [Chef Cookbook](https://github.com/mojolingo/lumenvox-chef) to do the same.

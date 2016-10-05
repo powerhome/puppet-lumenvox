@@ -1,12 +1,12 @@
 {
-  "name": "mojolingo/lumenvox",
-  "version": "0.0.1",
+  "name": "powerhome/lumenvox",
+  "version": "0.1.0",
   "author": "Justin Aiken",
   "summary": "Install and manage Lumenvox services",
   "license": "MIT",
-  "source": "https://github.com/mojolingo/puppet-lumenvox",
-  "project_page": "https://github.com/mojolingo/puppet-lumenvox",
-  "issues_url": "https://github.com/mojolingo/puppet-lumenvox/issues",
+  "source": "https://github.com/powerhome/puppet-lumenvox",
+  "project_page": "https://github.com/powerhome/puppet-lumenvox",
+  "issues_url": "https://github.com/powerhome/puppet-lumenvox/issues",
   "operatingsystem_support": [
     {
       "operatingsystem": "CentOS",
