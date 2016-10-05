@@ -22,3 +22,14 @@ matrix:
     env: PUPPET_GEM_VERSION="~> 4.3" FACTER_GEM_VERSION="~> 2.4" HIERA_GEM_VERSION="~> 3.0"
 notifications:
   email: false
+deploy:
+  provider: puppetforge
+  user: powerhome
+  password:
+    secure: "rHMu92sJNInuh8KMkij5jW1DabnzCkxwvbgdc1X9raCwzGfPBWG0yuTbq+pjUxMxu4DNh288zX9HNUQOhOGLPnAevi5XjtknTlg4BdZ8dfC9yIODlp2jexagbbIZR+EJdS9EnW3Qsl+/fbHx7X/cIQN7cL9y5Xsb5bfeM2NMGlw="
+  on:
+    tags: true
+    all_branches: true
+    rvm: 2.1
+    condition:
+    - $PUPPET_GEM_VERSION = '~> 4.3'
