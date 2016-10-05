@@ -12,7 +12,7 @@ class lumenvox::sre
 {
 
   $version           = $lumenvox::options['sre']['version']
-  $sem_ver           = regsubst($version, '^([0-9]+.[0-9]+.[0-9]+)','\1')
+  $sem_ver           = regsubst($version, '^([0-9]+\.[0-9]+\.[0-9]+)','\1')
   $language_packs    = $lumenvox::options['sre']['language_packs']
   $logging_verbosity = $lumenvox::options['sre']['logging_verbosity']
 
