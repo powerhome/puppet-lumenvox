@@ -13,6 +13,7 @@ class lumenvox::tts
 
   $num_synthesis_threads = $::lumenvox::options['tts']['num_synthesis_threads']
   $version               = $::lumenvox::options['tts']['version']
+  $lumenvox_version      = regsubst($version, '^(\d+\.\d+\.\d+)(.*)$','\1')
   $voices                = $::lumenvox::options['tts']['voices']
 
   package { 'LumenVoxTTS':

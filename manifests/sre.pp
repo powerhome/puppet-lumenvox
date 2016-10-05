@@ -12,6 +12,7 @@ class lumenvox::sre
 {
 
   $version           = $lumenvox::options['sre']['version']
+  $lumenvox_version  = regsubst($version, '^(\d+\.\d+\.\d+)(.*)$','\1')
   $language_packs    = $lumenvox::options['sre']['language_packs']
   $logging_verbosity = $lumenvox::options['sre']['logging_verbosity']
 

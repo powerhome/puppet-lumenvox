@@ -12,6 +12,7 @@ class lumenvox::media_server
 {
 
   $version            = $lumenvox::options['media_server']['version']
+  $lumenvox_version   = regsubst($version, '^(\d+\.\d+\.\d+)(.*)$','\1')
   $mrcp_server_ip     = $lumenvox::options['media_server']['mrcp_server_ip']
   $enable_sre_logging = $lumenvox::options['media_server']['enable_sre_logging']
   $sre_ip             = $lumenvox::options['media_server']['sre_ip']
