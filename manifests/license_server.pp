@@ -11,7 +11,7 @@
 class lumenvox::license_server
 {
 
-  require lumenvox::core
+  require ::lumenvox::core
 
   $version = $lumenvox::options['license_server']['version']
 
