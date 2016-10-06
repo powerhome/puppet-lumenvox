@@ -1,6 +1,6 @@
 {
   "name": "powerhome/lumenvox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Justin Aiken",
   "summary": "Install and manage Lumenvox services",
   "license": "MIT",

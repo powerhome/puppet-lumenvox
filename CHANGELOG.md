@@ -1,4 +1,4 @@
-##2016-10-06 - Pete Brown <pete@abstractit.com.au> 0.1.0
+##2016-10-06 - Pete Brown <pete@abstractit.com.au> 0.1.1
 ###Summary
 
 First Puppet Forge Release
