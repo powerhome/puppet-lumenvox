@@ -1,5 +1,5 @@
 name    'powerhome/lumenvox'
-version '0.1.0'
+version '0.1.1'
 source 'https://github.com/powerhome/puppet-lumenvox'
 author 'Justin Aiken'
 license 'MIT'
