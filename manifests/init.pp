@@ -18,7 +18,10 @@ class lumenvox (
   $default_options = $lumenvox::params::default_options
   $options = lumenvox_deepmerge($default_options, $override_options)
 
-  include ::lumenvox::core
+  $core_version = $lumenvox::options['core']['version']
+  class {'::lumenvox::core':
+    version => $core_version,
+  }
   include ::lumenvox::client
   include ::lumenvox::sre
   include ::lumenvox::media_server

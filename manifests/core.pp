@@ -8,10 +8,9 @@
 #   Justin Aiken <jaiken@mojolingo.com>
 #
 
-class lumenvox::core
-{
-
-  $version = $lumenvox::options['core']['version']
+class lumenvox::core (
+  $version = 'latest',
+) {
 
   $lumenvox_deps = [
     'libxml2',
