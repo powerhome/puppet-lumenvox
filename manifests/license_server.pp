@@ -8,12 +8,11 @@
 #   Justin Aiken <jaiken@mojolingo.com>
 #
 
-class lumenvox::license_server
-{
+class lumenvox::license_server (
+  $version = 'latest',
+) {
 
   require ::lumenvox::core
-
-  $version = $lumenvox::options['license_server']['version']
 
   package { 'LumenVoxLicenseServer':
     ensure   => $version,
