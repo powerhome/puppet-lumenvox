@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: puppet-lumenvox
+  title: Puppet Lumenvox
+  description: Puppet module to manage Lumenvox
+  tags:
+    - puppet
+spec:
+  type: service
+  owner: watchtower
+  lifecycle: production
+  system: talkbox
