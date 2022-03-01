@@ -9,5 +9,8 @@ metadata:
 spec:
   type: service
   owner: watchtower
+  domain: technology-foundations-and-tools
   lifecycle: production
   system: talkbox
+  dependsOn:
+    - component:puppet-ctrl
