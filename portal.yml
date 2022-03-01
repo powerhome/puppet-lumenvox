@@ -7,10 +7,8 @@ metadata:
   tags:
     - puppet
 spec:
-  type: service
-  owner: watchtower
+  type: library
+  owner: stormwatch
   domain: technology-foundations-and-tools
   lifecycle: production
-  system: talkbox
-  dependsOn:
-    - component:puppet-ctrl
+  
