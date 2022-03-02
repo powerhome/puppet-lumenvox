@@ -6,6 +6,8 @@ metadata:
   description: Puppet module to manage Lumenvox
   tags:
     - puppet
+  annotations:
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: library
   owner: stormwatch

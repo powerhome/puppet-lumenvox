@@ -1,0 +1,6 @@
+site_name: Puppet Lumenvox
+site_description: The Puppet Lumenvox Documentation
+nav:
+  - "Home": "README.md"
+plugins:
+  - techdocs-core
