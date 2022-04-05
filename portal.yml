@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: puppet-lumenvox
+  title: Puppet Lumenvox
+  description: Puppet module to manage Lumenvox
+  tags:
+    - puppet
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: library
+  owner: stormwatch
+  domain: technology-foundations-and-tools
+  lifecycle: production
