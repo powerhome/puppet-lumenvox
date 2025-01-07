@@ -96,7 +96,7 @@ GEM
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
-    rake (11.1.2)
+    rake (13.0.6)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
