@@ -11,5 +11,5 @@ metadata:
 spec:
   type: library
   owner: stormwatch
-  domain: technology-foundations-and-tools
+  domain: platform
   lifecycle: production
